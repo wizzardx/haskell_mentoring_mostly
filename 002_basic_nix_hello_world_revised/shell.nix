@@ -1,3 +1,3 @@
 let
-  pkgs = import ./pegged-nix.nix ;
+  pkgs = import <nixpkgs> {};
 in import ./default.nix {inherit (pkgs) stdenv fetchurl;}
