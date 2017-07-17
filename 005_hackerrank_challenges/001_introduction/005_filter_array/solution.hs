@@ -1,3 +1,7 @@
+#! /usr/bin/env nix-shell
+#! nix-shell ../../../004_an_updated_nix_shell_file/shell.nix  -i runghc
+
+-- run it locally by doing `cat sample-input.txt | ./solution.hs`
 
 f :: Int -> [Int] -> [Int]
 f n arr = filter (<n) arr
