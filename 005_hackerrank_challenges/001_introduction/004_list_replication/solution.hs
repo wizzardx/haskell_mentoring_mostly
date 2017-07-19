@@ -1,6 +1,8 @@
 
 f :: Int -> [Int] -> [Int]
-f n arr = concat $ map (replicate n) arr
+-- f n arr = concatMap (replicate n) arr
+-- eta reduces to:
+f n = concatMap (replicate n)
 
 -- This part handles the Input and Output and can be used as it is. Do not modify this part.
 main :: IO ()
