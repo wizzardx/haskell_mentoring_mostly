@@ -1,21 +1,12 @@
-
-import Control.Applicative
 import Control.Monad
-import System.IO
+import Text.Read
 
 main :: IO ()
 main = do
     n_temp <- getLine
-    let n = read n_temp :: Int
     --  Print "Hello World" on a new line 'n' times.
-    replicateM_ n $ putStrLn "Hello World"
-
-getMultipleLines :: Int -> IO [String]
-getMultipleLines n
-    | n <= 0 = return []
-    | otherwise = do
-        x <- getLine
-        xs <- getMultipleLines (n-1)
-        let ret = (x:xs)
-        return ret
+    let e = readEither n_temp :: Either String Int
+    case e of
+         Left s -> putStrLn $ "Error: Invalid integer input (" ++ n_temp ++ "): " ++ s
+         Right n -> replicateM_ n $ putStrLn "Hello World"
 
