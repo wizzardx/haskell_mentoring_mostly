@@ -2,15 +2,18 @@
 -- Instead, as recommended, we define our own custom filter function
 
 f :: Int -> [Int] -> [Int]
-f n arr = filter' (<n) arr
+-- f n arr = filter' (<n) arr
+-- eta reduces to:
+f n = filter' (<n)
 
 filter' :: (a -> Bool) -> [a] -> [a]
-filter' f [] = []
-filter' f (x:xs) = if (f x)
-                   then x:filter' f xs
-                   else filter' f xs
+filter' _ [] = []
+filter' g (x:xs) = if g x
+                   then x:filter' g xs
+                   else filter' g xs
 
 -- The Input/Output section. You do not need to change or modify this part
+main :: IO ()
 main = do
     n <- readLn :: IO Int
     inputdata <- getContents
